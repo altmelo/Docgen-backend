@@ -12,7 +12,7 @@ Backend em Spring Boot para gerenciamento de clientes, modelos de documentos e g
 - `SERVER_PORT` (default: `8080`)
 - `DB_URL` (default: `jdbc:postgresql://localhost:5432/docgen_db`)
 - `DB_USERNAME` (default: `docgen_user`)
-- `DB_PASSWORD` (default: `password`)
+- `DB_PASSWORD` (default: ******)
 - `CORS_ALLOWED_ORIGINS` (default: `http://localhost:3000,http://localhost:5173`)
 - `JWT_SECRET` (obrigatória; Base64 com pelo menos 256 bits)
 - `JWT_ACCESS_TOKEN_EXPIRATION_MS` (default: `900000`)
