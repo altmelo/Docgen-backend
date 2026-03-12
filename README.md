@@ -43,25 +43,6 @@ Atualizações (V2):
 - `usuarios.senha_hash` (não-nulo; default vazio)
 - constraint `uk_usuarios_email` (email único)
 
-## Executar localmente
-
-1. Suba um PostgreSQL local e crie o banco/usuário conforme as variáveis acima.
-2. Defina `JWT_SECRET` e (opcionalmente) `DB_*`.
-3. Suba a aplicação.
-
-## Versionamento e publicação no GitHub
-
-### 1) Inicializar repositório local
-
-Se o projeto ainda não estiver versionado:
-
-```powershell
-git init
-git branch -M main
-```
-
-### 3) Estruturar commits com mensagens descritivas
-
 Recomendação: Conventional Commits (facilita histórico, release notes e revisão).
 
 - `feat: ...` nova funcionalidade
@@ -75,47 +56,6 @@ Exemplos:
 - `feat(auth): adicionar endpoint de refresh token`
 - `fix(templates): retornar 404 ao buscar template inexistente`
 - `chore(ci): configurar GitHub Actions`
-
-### 4) Primeiro commit (push inicial)
-
-```powershell
-git add -A
-git commit -m "chore: commit inicial"
-```
-
-### 5) Criar repositório remoto no GitHub
-
-Crie um repositório no GitHub (Public ou Private) e copie a URL.
-
-### 6) Configurar remote e fazer push
-
-```powershell
-git remote add origin https://github.com/<org-ou-user>/<repo>.git
-git push -u origin main
-```
-
-### 7) Publicar releases (opcional)
-
-Tags ajudam a marcar versões:
-
-```powershell
-git tag -a v0.1.0 -m "v0.1.0"
-git push origin v0.1.0
-```
-
-### Rodar com Maven Wrapper (PowerShell)
-
-Se não tiver `mvn` instalado, execute o wrapper via Java:
-
-```powershell
-java "-Dmaven.multiModuleProjectDirectory=$PWD" -classpath .mvn/wrapper/maven-wrapper.jar org.apache.maven.wrapper.MavenWrapperMain spring-boot:run
-```
-
-Em ambientes Unix (Linux/macOS/CI), use o script `mvnw`:
-
-```bash
-./mvnw -B spring-boot:run
-```
 
 ### Rodar testes
 
