@@ -240,23 +240,3 @@ POST /api/v1/templates
   "isActive": true
 }
 ```
-
-## Segurança e compartilhamento com frontend
-
-- Não coloque tokens, senhas ou secrets no repositório.
-- Compartilhe credenciais somente por canal seguro (ex.: gerenciador de senhas) e prefira credenciais temporárias de desenvolvimento.
-- Antes de fazer push, revise histórico e arquivos locais por `.env`, chaves (`*.pem`, `*.p12`) e configs de produção.
-
-## CI/CD
-
-Este repositório inclui GitHub Actions para rodar testes em `push` e `pull_request` na branch `main`.
-
-Arquivo: [ci.yml](file:///c:/Users/rapha/Downloads/untitled/.github/workflows/ci.yml)
-
-## Licença
-
-Este projeto está sob a licença MIT. Veja [LICENSE](file:///c:/Users/rapha/Downloads/untitled/LICENSE).
-
-## Contribuindo
-
-Veja [CONTRIBUTING.md](file:///c:/Users/rapha/Downloads/untitled/CONTRIBUTING.md).
