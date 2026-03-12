@@ -1,11 +1,11 @@
 # DocGen Backend
 
-Backend em Spring Boot para gerenciamento de clientes, modelos de documentos e geração de HTML a partir de placeholders.
+Backend + Spring Boot para gerenciamento de clientes, modelos de documentos e geração de HTML a partir de placeholders.
 
-## Requisitos
+## Stacks
 
-- Java 17+ (recomendado: 17).  
-- PostgreSQL 13+.
+- Java 17
+- PostgreSQL 13
 
 ## Variáveis de ambiente
 
@@ -59,12 +59,6 @@ Se o projeto ainda não estiver versionado:
 git init
 git branch -M main
 ```
-
-### 2) Garantir `.gitignore` adequado
-
-Este projeto usa Java/Spring Boot e Maven. Garanta que artefatos (`target/`), logs e arquivos locais/sensíveis (ex.: `.env`) não sejam commitados.
-
-Arquivo: [.gitignore](file:///c:/Users/rapha/Downloads/untitled/.gitignore)
 
 ### 3) Estruturar commits com mensagens descritivas
 
