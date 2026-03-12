@@ -1,5 +1,6 @@
 package com.docgen.auth.dto;
 
+import com.docgen.entity.UserRole;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;

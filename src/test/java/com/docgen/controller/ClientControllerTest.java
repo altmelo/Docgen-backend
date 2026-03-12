@@ -10,8 +10,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityFilterAutoConfiguration;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.MockBean;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
@@ -32,7 +34,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  *
  * @author QA Senior Engineer
  */
-@WebMvcTest(ClientController.class)
+@WebMvcTest(controllers = ClientController.class, excludeAutoConfiguration = {
+        SecurityAutoConfiguration.class,
+        SecurityFilterAutoConfiguration.class
+})
 @DisplayName("ClientController - Testes de API REST com MockMvc")
 @WithMockUser(username = "dev@local")
 class ClientControllerTest {
@@ -100,7 +105,7 @@ class ClientControllerTest {
             mockMvc.perform(get("/api/v1/clients/{id}/documents", clientId)
                     .param("templateId", templateId.toString()))
                 .andExpect(status().isOk())
-                .andExpect(content().contentType(containsString("text/html")));
+                .andExpect(header().string("Content-Type", containsString("text/html")));
         }
 
         @Test

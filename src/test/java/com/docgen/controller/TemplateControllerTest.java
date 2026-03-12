@@ -14,8 +14,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityFilterAutoConfiguration;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.MockBean;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
@@ -39,7 +41,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  *
  * @author QA Senior Engineer
  */
-@WebMvcTest(TemplateController.class)
+@WebMvcTest(controllers = TemplateController.class, excludeAutoConfiguration = {
+        SecurityAutoConfiguration.class,
+        SecurityFilterAutoConfiguration.class
+})
 @DisplayName("TemplateController - Testes de API REST com MockMvc")
 @WithMockUser(username = "dev@local")
 class TemplateControllerTest {
@@ -119,7 +124,7 @@ class TemplateControllerTest {
                     .param("clientId", clientId.toString())
                     .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(content().contentType(containsString("text/html")))
+                .andExpect(header().string("Content-Type", containsString("text/html")))
                 .andExpect(content().string(expectedPreview));
 
             verify(documentGenerationService, times(1))
@@ -327,7 +332,7 @@ class TemplateControllerTest {
             mockMvc.perform(get("/api/v1/templates")
                     .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(content().contentType(containsString("application/json")));
+                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON));
         }
 
         @Test
